@@ -1,0 +1,17 @@
+{
+  "name": "RestfullPrivateBlockchain",
+  "version": "1.0.0",
+  "description": "With this system you can interact with a Private Blockchain to submit and retrieve blockchain data",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Gleisson T. Cabral",
+  "license": "MIT License",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "crypto-js": "^3.1.9-1",
+    "level": "^4.0.0",
+    "express": "^4.16.3"
+  }
+}
