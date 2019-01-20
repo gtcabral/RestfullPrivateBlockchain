@@ -1,7 +1,7 @@
 const SHA256 = require('crypto-js/sha256');
 const BlockClass = require('./Block.js');
 const BlockChain = require('./BlockChain.js');
-
+const bodyParser = require('body-parser');
 
 /**
  * Controller Definition to encapsulate routes to work with blocks
@@ -23,10 +23,14 @@ class BlockController {
      * Implement a GET Endpoint to retrieve a block by index, url: "/api/block/:index"
      */
     getBlockByIndex() {
-        this.app.get("/api/block/:index", (req, res) => {
+        this.app.get("/block/:index", (req, res) => {
             this.myBlockChain.getBlock(req.params["index"]).then((bloco) => {
                 res.send(bloco);
-             }).catch((err) => { res.send(err);});
+             }).catch((err) => { res.send("Block " + req.params["index"] + " not found!");});
+        });
+
+        this.app.get("/block/", (req, res) => {
+            res.send("You must ask for a valid block!");
         });
     }
 
@@ -34,9 +38,8 @@ class BlockController {
      * Implement a POST Endpoint to add a new Block, url: "/api/block"
      */
     postNewBlock() {
-        //this.app.post("/api/block/:data", (req, res) => {
-        this.app.post("/api/block/:data", (req, res) => {
-            let data = req.params["data"];            
+        this.app.post("/block/", (req, res) => {
+            let data = req.body.body;            
             let blockAux = new BlockClass.Block(data);
             this.myBlockChain.addBlock(blockAux).then((result) => {
                 res.send(result);

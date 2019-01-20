@@ -24,8 +24,8 @@
                     if (key == 0)   
                         resolve("Success to insert the Genesis Block");
                     else
-                        resolve("Success to insert the new block " + key);
-
+                        //resolve("Success to insert the new block " + key);
+                        resolve(value);
                 });
             }
 
