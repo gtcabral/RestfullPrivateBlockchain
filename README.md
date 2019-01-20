@@ -1,7 +1,31 @@
 # RestfullPrivateBlockchain
 With this system, you can interact with a Private Blockchain to submit and retrieve blockchain data
 
-## Setup project for Review
+## Usage
+
+### Get Block by id
+```
+curl -X GET \
+  http://localhost:8000/block/0 \
+  -H 'Content-Type: application/x-www-form-urlencoded'
+```
+### Post Block with a body value
+```
+curl -X POST \
+  http://localhost:8000/block/ \
+  -H 'Content-Type: application/x-www-form-urlencoded' \
+  -d 'body=testing%20block'
+```
+## Architecture
+Local server
+
+1. Node.js - https://nodejs.org/en/
+2. Express - https://expressjs.com/
+3. Crypto-js - https://www.npmjs.com/package/crypto-js
+4. Body-parser - https://www.npmjs.com/package/body-parser
+5. LevelDB - http://leveldb.org/
+
+## Getting Started
 
 To set up the project for review do the following:
 1. Download the project or clone the repository --> git clone https://github.com/gtcabral/RestfullPrivateBlockchain
@@ -9,10 +33,21 @@ To set up the project for review do the following:
 3. Run command __npm install__ to install the project dependencies.
 4. Run command __node app.js__ in the root directory.
 
-## Testing the project
+## Endpoints
 
-To test this project, I recommend you to use the software Postman (https://www.getpostman.com)
-1. Open Postman
-2. Create a GET request to __localhost:8000/api/block/0__ --> the request returns the JSON of the Genesis Block
-3. Create a POST request to __localhost:8000/api/block/inserting test block number 1__ --> the request will return __Success to insert the new block 1__
-4. Create a GET request to __localhost:8000/api/block/1__ --> the request will return the JSON of the Block #1
+### GET Endpoints
+__Get block by ID__
+```
+curl -X GET \
+  http://localhost:8000/block/0 \
+  -H 'Content-Type: application/x-www-form-urlencoded'
+```
+
+### POST Endpoints
+__Post Block with a body value__
+```
+curl -X POST \
+  http://localhost:8000/block/ \
+  -H 'Content-Type: application/x-www-form-urlencoded' \
+  -d 'body=testing%20block'
+```
